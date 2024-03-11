@@ -4,9 +4,27 @@
         <meta charset="UTF-8">
         <meta name="webSysProject" content="width=device-width, initial-scale=1">
         <title>Web systems project one</title>
-    </head>
+        </head>
     <body>
-        <!-- the content goes here -->
-        <h1>Hello world</h1>
+        <h1>Press the button</h1>
+        <input id="textField" type="text" name="textField" value="Enter your name"/>
+        <input id="button" type="submit" name="button" value="enter"/>
+        <script>
+            let button = document.getElementById('button');
+            let nameField = document.getElementById('textField');
+            console.log('Button:', button);
+            button.onclick = function() {
+                console.log('Button clicked');
+                fetch(`http://172.19.136.152:12000/HI_${nameField.value}?`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => console.log(data));
+                return false;
+            }
+        </script>
     </body>
 </html>
