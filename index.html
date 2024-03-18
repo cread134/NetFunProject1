@@ -15,7 +15,8 @@
             console.log('Button:', button);
             button.onclick = function() {
                 console.log('Button clicked');
-                fetch(`http://172.19.136.152:12000/HI_${nameField.value}?`, {
+                const location = window.location.hostname;
+                fetch(`/HI_${nameField.value}?`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
